@@ -1,4 +1,4 @@
-<html>
+<html ng-app="smf">
     <head>
         <title>
            Basic Social Media Feed 
@@ -7,10 +7,24 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         
         <link rel="stylesheet" href="myStyle.css" type="text/css">
+        <script type="text/javascript" src="angular.min.js"></script>
+        
+        <script type="text/javascript">
+            
+            var app= angular.module('smf', []);
+            
+            app.controller('postFeeds',function($scope){
+                $scope.allFeeds=[" Hello there! This is a simple attempt to begin developing in MEAN stack.",
+                     " Not trying to create something big as of now.",
+                    "Just want  to get started, so starting of small." ]; 
+            });
+        
+            
+        </script>
 
     </head>
     
-    <body>
+    <body ng-controller="postFeeds">
        
         <div class="row">
             <div style="background:aqua" class="col-md-3">
@@ -27,22 +41,15 @@
               </div>
             </div>
             <div style="background: blue" class="col-md-9 right-side">
-               <div class="indi-feeds">
+              
+             <div class="indi-feeds" ng-repeat="eachFeed in allFeeds">
                    
-                   <h3>
-                    Hello there! This is a simple attempt to begin developing in MEAN stack.
-                </h3></div>
+                <h3>
+                   {{ eachFeed }}
+                </h3>
                 
-                <div class="indi-feeds">
-                    <h3>
-                    Not trying to create something big as of now.
-                </h3>
-                </div>
-                <div class="indi-feeds">
-                   <h3>
-                   Just want  to get started, so starting of small.
-                </h3>
-                </div>
+            </div>
+                
                 
             </div>
         </div>
