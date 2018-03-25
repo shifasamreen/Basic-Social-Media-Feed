@@ -1,0 +1,19 @@
+.login-box{
+    background: azure;
+    height: 300px;
+    margin: 20px 10px;
+    
+}
+
+.right-side{
+    color: beige;
+    padding: 30px;
+}
+
+.indi-feeds{
+    border: 2px solid aqua;
+    box-shadow: 1px white;
+    height: 100px;
+    padding: 10px;
+    border-radius: 20px;
+}
