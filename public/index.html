@@ -14,18 +14,30 @@
             var app= angular.module('smf', []);
             
             app.controller('postFeeds',function($scope, $http){
-                
+               
                  $scope.submitFeed = function(){
                     $http.post('/myfeeds',{newFeed : $scope.newFeed}).then(function(){
-                       alert("Submitted!"); 
+                       getFeeds(); 
                     });
-                } 
-                
-            $http.get('/myfeeds').then(function(response){
+                }
+                 
+                 $scope.deleteFeed = function(eachFeed){
+                    $http.put('/myfeeds/remove',{eachFeed : eachFeed}).then(function(){
+                       getFeeds(); 
+                    });
+                };
+                 
+            function getFeeds(){
+                $http.get('/myfeeds').then(function(response){
                    $scope.allFeeds = response.data;
+                    
                 });
+            }
+              getFeeds(); 
+              
+                
             });
-        
+     
             
         </script>
 
@@ -65,6 +77,7 @@
                    {{ eachFeed.text }}
                 </h3>
                 
+                <a style="color: black" href ng-click="deleteFeed(eachFeed)"><span>delete</span></a>
             </div>
                 
                 
